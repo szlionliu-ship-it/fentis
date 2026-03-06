@@ -8,12 +8,26 @@
 - 提供 Nginx 配置与容器化部署骨架（`deploy/`, `Dockerfile`, `docker-compose.yml`）
 - 提供发布前自动检查脚本（`scripts/release_prep.sh`）
 
+
+## 当前改动进度（你可以直接预览）
+
+- 已完成：静态首页、样式、GitHub Pages 工作流、发布文档。
+- 可立即预览：
+  - 本地预览：`./scripts/preview_local.sh`
+  - 推断 GitHub Pages 地址：`./scripts/preview_github_url.sh`
+
 ## 本地运行
 
 ### 方式 1：直接静态预览
 
 ```bash
-python3 -m http.server 4173 --directory web
+./scripts/preview_local.sh
+```
+
+或自定义端口：
+
+```bash
+./scripts/preview_local.sh 5000
 ```
 
 打开：`http://127.0.0.1:4173`
@@ -57,3 +71,16 @@ docker compose up --build -d
 3. 在 Actions 的 deploy 任务中查看 `page_url` 即可在线预览。
 
 详细说明见：`docs/github-preview.md`。
+
+
+## 快速拿到 GitHub 预览地址
+
+```bash
+./scripts/preview_github_url.sh
+```
+
+如果提示未配置 `origin`，先执行：
+
+```bash
+git remote add origin https://github.com/<你的用户名>/<你的仓库名>.git
+```

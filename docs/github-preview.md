@@ -23,6 +23,20 @@
 
 - `https://<你的GitHub用户名>.github.io/<仓库名>/`
 
+## 命令行快速推断地址
+
+仓库里提供了脚本：
+
+```bash
+./scripts/preview_github_url.sh
+```
+
+如果提示 `origin` 未配置，请先配置：
+
+```bash
+git remote add origin https://github.com/<你的用户名>/<你的仓库名>.git
+```
+
 ## 常见问题
 
 - 404：确认 `web/index.html` 存在。
