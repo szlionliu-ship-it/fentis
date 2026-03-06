@@ -59,19 +59,25 @@ docker compose up --build -d
 - 增加 CI（自动构建、健康检查、镜像推送）
 - 按域名和证书完成正式生产发布
 
+## 在 GitHub 里预览网站（给他人看）
 
-## 在 GitHub 里预览网站（推荐）
+你遇到“没有 GitHub Actions 选项”是常见情况，已提供两种预览方式：
 
-本仓库已配置 GitHub Pages 自动发布工作流：`.github/workflows/pages.yml`，会将 `web/` 目录发布为静态站点。
+1. 如果 Pages 里有 **GitHub Actions**，按 `docs/github-preview.md` 的路径 A。
+2. 如果没有该选项，走路径 B（**Deploy from a branch**）：
 
-快速步骤：
+```bash
+./scripts/publish_branch_preview.sh
+git add docs/site
+git commit -m "chore: publish preview via branch source"
+git push origin <你的分支>
+```
 
-1. 进入仓库 `Settings -> Pages`，将 Source 设为 **GitHub Actions**。
-2. push 到 `work` / `main` / `master`，或在 Actions 手动运行发布。
-3. 在 Actions 的 deploy 任务中查看 `page_url` 即可在线预览。
+然后在 `Settings -> Pages` 选择：
+- Source: **Deploy from a branch**
+- Folder: **/docs/site**
 
 详细说明见：`docs/github-preview.md`。
-
 
 ## 快速拿到 GitHub 预览地址
 

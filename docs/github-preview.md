@@ -1,44 +1,56 @@
 # 如何在 GitHub 里预览网站（GitHub Pages）
 
-这个仓库已配置 `.github/workflows/pages.yml`，会把 `web/` 目录自动发布到 GitHub Pages。
+如果你在 **Settings -> Pages** 看不到 **GitHub Actions** 选项，不是你操作错了，通常是仓库权限/套餐/组织策略限制。
 
-## 一次性设置（GitHub 网页端）
+下面给你两条可用路径：
+
+## 路径 A：GitHub Actions（有该选项时）
 
 1. 打开仓库 -> **Settings** -> **Pages**。
 2. 在 **Build and deployment** 里选择 **Source: GitHub Actions**。
-3. 保存后，回到仓库首页。
+3. push 到 `work` / `main` / `master`，或在 **Actions** 手动运行 `Deploy static site to GitHub Pages`。
+4. 在 Actions 的 `deploy` 任务里查看 `page_url`。
 
-## 触发发布
+## 路径 B：Deploy from a branch（没有 Actions 选项时）
 
-- 方式 1：直接 push 到 `work` / `main` / `master` 分支。
-- 方式 2：打开 **Actions**，手动运行 `Deploy static site to GitHub Pages`。
+1. 在本地执行：
 
-## 在哪里看预览地址
+```bash
+./scripts/publish_branch_preview.sh
+```
 
-1. 进入 **Actions** -> 对应 workflow 的最新运行。
-2. 打开 `deploy` job。
-3. 查看 `deployment` 步骤输出里的 `page_url`。
+2. 提交并推送 `docs/site`：
 
-通常地址形如：
+```bash
+git add docs/site
+git commit -m "chore: publish preview via branch source"
+git push origin <你的分支>
+```
 
-- `https://<你的GitHub用户名>.github.io/<仓库名>/`
+3. 打开 GitHub -> **Settings** -> **Pages**：
+   - Source 选择 **Deploy from a branch**
+   - Branch 选择你的分支（如 `main`）
+   - Folder 选择 `/docs/site`
 
-## 命令行快速推断地址
+4. 保存后等待 1~3 分钟，打开 Pages 地址预览。
 
-仓库里提供了脚本：
+## 命令行快速推断预览地址
 
 ```bash
 ./scripts/preview_github_url.sh
 ```
 
-如果提示 `origin` 未配置，请先配置：
+通常地址形如：
 
-```bash
-git remote add origin https://github.com/<你的用户名>/<你的仓库名>.git
-```
+- `https://<你的GitHub用户名>.github.io/<仓库名>/`
+
+## 看不到 GitHub Actions 选项的常见原因
+
+- 仓库在组织下，组织策略禁用了 Pages Actions 发布。
+- 仓库可见性/套餐限制导致 Actions 发布入口不显示。
+- 仓库是 Fork 且未开启对应 Pages 权限。
 
 ## 常见问题
 
-- 404：确认 `web/index.html` 存在。
-- 没有页面地址：确认 Pages 源已切换为 **GitHub Actions**。
-- 样式丢失：确认 `web/styles.css` 已提交且路径使用相对路径。
+- 404：确认 `index.html` 在你选择的发布目录下（`web/` 或 `docs/site/`）。
+- 样式丢失：确认 `styles.css` 已提交且使用相对路径。
