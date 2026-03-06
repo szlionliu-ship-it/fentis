@@ -11,7 +11,7 @@
 
 ## 当前改动进度（你可以直接预览）
 
-- 已完成：静态首页、样式、GitHub Pages 工作流、发布文档。
+- 已完成：静态首页、样式、GitHub Pages 工作流、发布文档、404 回退页。
 - 可立即预览：
   - 本地预览：`./scripts/preview_local.sh`
   - 推断 GitHub Pages 地址：`./scripts/preview_github_url.sh`
@@ -90,3 +90,11 @@ git push origin <你的分支>
 ```bash
 git remote add origin https://github.com/<你的用户名>/<你的仓库名>.git
 ```
+
+
+## Pages 404 回退说明
+
+为避免分享链接时出现空白错误页，已新增 `web/404.html`。
+
+- GitHub Pages（分支部署）会一并发布 `docs/site/404.html`。
+- 若访问不存在路径，会显示友好的 404 页面并可返回首页。

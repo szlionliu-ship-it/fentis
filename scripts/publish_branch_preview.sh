@@ -13,6 +13,11 @@ mkdir -p docs/site
 find docs/site -mindepth 1 -maxdepth 1 -exec rm -rf {} +
 cp -R web/. docs/site/
 
+# GitHub Pages 在分支发布模式下，404 页面可提升错误路由体验
+if [ -f docs/site/index.html ] && [ ! -f docs/site/404.html ]; then
+  cp docs/site/index.html docs/site/404.html
+fi
+
 echo "已将 web/ 同步到 docs/site/。"
 echo "下一步："
 echo "1) git add docs/site"
