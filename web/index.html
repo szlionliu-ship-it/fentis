@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fentis - 智能增长工作台</title>
+    <meta name="description" content="Fentis 第一批功能改进：官网基础版、可运行、可部署、可发布。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <strong>Fentis</strong>
+        <span class="pill">V1 基础版</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <h1>把增长动作标准化，让发布更可控</h1>
+        <p>
+          这是第一批功能改进版本：提供清晰的价值表达、功能卡片、发布清单入口，以及可执行的本地/容器部署方式。
+        </p>
+        <div class="actions">
+          <a href="#features" class="btn btn-primary">查看核心能力</a>
+          <a href="#release" class="btn btn-secondary">发布准备</a>
+        </div>
+      </section>
+
+      <section id="features" class="container section">
+        <h2>第一批上线能力</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>结构化主页</h3>
+            <p>统一品牌信息与核心卖点，便于后续持续迭代内容与转化路径。</p>
+          </article>
+          <article class="card">
+            <h3>基础健康检查</h3>
+            <p>内置 <code>/healthz</code> 探活接口，方便负载均衡与发布后验证。</p>
+          </article>
+          <article class="card">
+            <h3>容器化部署骨架</h3>
+            <p>提供 Nginx + Docker Compose，支持快速部署与回滚准备。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="release" class="container section release">
+        <h2>发布前检查</h2>
+        <ul>
+          <li>确认页面和静态资源加载正常</li>
+          <li>确认 <code>/healthz</code> 返回 200</li>
+          <li>确认容器启动与端口映射可用</li>
+          <li>确认回滚版本镜像可用</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <small>© 2026 Fentis · First iteration delivery</small>
+      </div>
+    </footer>
+  </body>
+</html>
