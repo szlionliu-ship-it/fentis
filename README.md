@@ -44,3 +44,16 @@ docker compose up --build -d
 - 接入真实业务接口（线索收集 / 登录 / 控制台）
 - 增加 CI（自动构建、健康检查、镜像推送）
 - 按域名和证书完成正式生产发布
+
+
+## 在 GitHub 里预览网站（推荐）
+
+本仓库已配置 GitHub Pages 自动发布工作流：`.github/workflows/pages.yml`，会将 `web/` 目录发布为静态站点。
+
+快速步骤：
+
+1. 进入仓库 `Settings -> Pages`，将 Source 设为 **GitHub Actions**。
+2. push 到 `work` / `main` / `master`，或在 Actions 手动运行发布。
+3. 在 Actions 的 deploy 任务中查看 `page_url` 即可在线预览。
+
+详细说明见：`docs/github-preview.md`。
